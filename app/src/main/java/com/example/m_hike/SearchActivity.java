@@ -12,10 +12,13 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.textfield.TextInputLayout;
+
 import java.util.List;
 
 public class SearchActivity extends AppCompatActivity {
     private EditText etSearchName, etSearchLocation, etSearchLength, etSearchDate;
+    private TextInputLayout tilSearchLocation, tilSearchLength, tilSearchDate;
     private RadioGroup rgSearchType;
     private ListView listViewResults;
     private DatabaseHelper dbHelper;
@@ -32,6 +35,9 @@ public class SearchActivity extends AppCompatActivity {
         etSearchLocation = findViewById(R.id.etSearchLocation);
         etSearchLength = findViewById(R.id.etSearchLength);
         etSearchDate = findViewById(R.id.etSearchDate);
+        tilSearchLocation = findViewById(R.id.tilSearchLocation);
+        tilSearchLength = findViewById(R.id.tilSearchLength);
+        tilSearchDate = findViewById(R.id.tilSearchDate);
         rgSearchType = findViewById(R.id.rgSearchType);
         listViewResults = findViewById(R.id.listViewResults);
 
@@ -42,16 +48,14 @@ public class SearchActivity extends AppCompatActivity {
         rgSearchType.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId == R.id.rbSimple) {
                 // Simple search - show only name field
-                etSearchName.setVisibility(View.VISIBLE);
-                etSearchLocation.setVisibility(View.GONE);
-                etSearchLength.setVisibility(View.GONE);
-                etSearchDate.setVisibility(View.GONE);
+                tilSearchLocation.setVisibility(View.GONE);
+                tilSearchLength.setVisibility(View.GONE);
+                tilSearchDate.setVisibility(View.GONE);
             } else {
                 // Advanced search - show all fields
-                etSearchName.setVisibility(View.VISIBLE);
-                etSearchLocation.setVisibility(View.VISIBLE);
-                etSearchLength.setVisibility(View.VISIBLE);
-                etSearchDate.setVisibility(View.VISIBLE);
+                tilSearchLocation.setVisibility(View.VISIBLE);
+                tilSearchLength.setVisibility(View.VISIBLE);
+                tilSearchDate.setVisibility(View.VISIBLE);
             }
         });
 
