@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">M-Hike</string>
+    
+    <string-array name="difficulty_levels">
+        <item>Select Difficulty</item>
+        <item>Easy</item>
+        <item>Moderate</item>
+        <item>Hard</item>
+        <item>Very Hard</item>
+    </string-array>
+</resources>
