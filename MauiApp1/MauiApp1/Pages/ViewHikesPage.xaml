@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Pages.ViewHikesPage"
+             Title="All Hikes">
+
+    <VerticalStackLayout Padding="16" Spacing="16">
+        
+        <Label
+            Text="All Hikes"
+            FontSize="24"
+            FontAttributes="Bold"
+            HorizontalOptions="Center" />
+
+        <CollectionView
+            x:Name="HikesCollectionView"
+            SelectionMode="Single"
+            SelectionChanged="OnHikeSelected">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10">
+                        <Frame
+                            HasShadow="True"
+                            BorderColor="Gray"
+                            Padding="15">
+                            <VerticalStackLayout>
+                                <Label
+                                    Text="{Binding Name}"
+                                    FontSize="18"
+                                    FontAttributes="Bold" />
+                                <Label
+                                    Text="{Binding Location}"
+                                    FontSize="14" />
+                                <Label
+                                    Text="{Binding Date}"
+                                    FontSize="12"
+                                    TextColor="Gray" />
+                            </VerticalStackLayout>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button
+            x:Name="BtnClearAll"
+            Text="Reset Database (Delete All)"
+            BackgroundColor="#F44336"
+            TextColor="White"
+            Padding="16"
+            Margin="0,16,0,0"
+            Clicked="OnClearAllClicked" />
+
+    </VerticalStackLayout>
+
+</ContentPage>
+

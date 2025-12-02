@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Pages.AddEditHikePage"
+             Title="Add New Hike">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="16"
+            Spacing="16">
+
+            <Label
+                Text="Add New Hike"
+                FontSize="24"
+                FontAttributes="Bold"
+                HorizontalOptions="Center" />
+
+            <Entry
+                x:Name="EntryName"
+                Placeholder="Name of Hike *" />
+
+            <Entry
+                x:Name="EntryLocation"
+                Placeholder="Location *" />
+
+            <Label
+                Text="Date of Hike *"
+                FontSize="16" />
+            <DatePicker
+                x:Name="DatePickerHike"
+                Format="yyyy-MM-dd" />
+
+            <Label
+                Text="Parking Available *"
+                FontSize="16" />
+
+            <HorizontalStackLayout Spacing="16">
+                <RadioButton
+                    x:Name="RadioYes"
+                    Content="Yes"
+                    IsChecked="True"
+                    GroupName="Parking" />
+                <RadioButton
+                    x:Name="RadioNo"
+                    Content="No"
+                    GroupName="Parking" />
+            </HorizontalStackLayout>
+
+            <Entry
+                x:Name="EntryLength"
+                Placeholder="Length (km) *"
+                Keyboard="Numeric" />
+
+            <Label
+                Text="Level of Difficulty *"
+                FontSize="16" />
+
+            <Picker
+                x:Name="PickerDifficulty"
+                Title="Select Difficulty">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Easy</x:String>
+                        <x:String>Moderate</x:String>
+                        <x:String>Hard</x:String>
+                        <x:String>Very Hard</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Editor
+                x:Name="EditorDescription"
+                Placeholder="Description (Optional)"
+                HeightRequest="100" />
+
+            <Entry
+                x:Name="EntryWeather"
+                Placeholder="Weather (Optional)" />
+
+            <Entry
+                x:Name="EntryDuration"
+                Placeholder="Estimated Duration (hours) (Optional)"
+                Keyboard="Numeric" />
+
+            <Button
+                x:Name="BtnSubmit"
+                Text="Submit"
+                Padding="16"
+                Margin="0,24,0,0"
+                Clicked="OnSubmitClicked" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
+
