@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:MauiApp1.Models"
              x:Class="MauiApp1.Pages.ViewHikesPage"
              Title="All Hikes">
 
@@ -17,12 +18,15 @@
             SelectionMode="Single"
             SelectionChanged="OnHikeSelected">
             <CollectionView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="models:Hike">
                     <Grid Padding="10">
                         <Frame
                             HasShadow="True"
                             BorderColor="Gray"
                             Padding="15">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnHikeTapped" />
+                            </Frame.GestureRecognizers>
                             <VerticalStackLayout>
                                 <Label
                                     Text="{Binding Name}"

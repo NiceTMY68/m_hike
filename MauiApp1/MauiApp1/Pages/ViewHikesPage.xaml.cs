@@ -30,6 +30,33 @@ public partial class ViewHikesPage : ContentPage
         }
     }
 
+    private async void OnHikeTapped(object? sender, TappedEventArgs e)
+    {
+        if (sender is Frame frame && frame.BindingContext is Hike selectedHike)
+        {
+            var action = await DisplayActionSheet(
+                $"Hike: {selectedHike.Name}",
+                "Cancel",
+                null,
+                "View Details",
+                "Edit",
+                "Delete");
+
+            switch (action)
+            {
+                case "View Details":
+                    await ShowHikeDetails(selectedHike);
+                    break;
+                case "Edit":
+                    await Navigation.PushAsync(new AddEditHikePage(selectedHike.Id));
+                    break;
+                case "Delete":
+                    await DeleteHike(selectedHike);
+                    break;
+            }
+        }
+    }
+
     private async void OnHikeSelected(object? sender, SelectionChangedEventArgs e)
     {
         if (e.CurrentSelection.FirstOrDefault() is Hike selectedHike)
